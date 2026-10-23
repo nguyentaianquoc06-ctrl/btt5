@@ -1,0 +1,47 @@
+package b22;
+import java.io.*;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		  Scanner sc = new Scanner(System.in);
+
+	        BufferedReader reader = null;
+	        PrintWriter writer = null;
+	        int lineCount = 0;
+	        boolean success = false;
+
+	        try {
+	           String nguon = sc.nextLine();
+	           String dich = sc.nextLine();
+	            
+	           reader = new BufferedReader(new FileReader(nguon));
+	           writer = new PrintWriter(new FileWriter(dich));
+	           String line;
+	        while ((line = reader.readLine()) != null) {
+	            writer.println(line);
+	            lineCount++;
+	        }
+	        writer.flush();
+	        if (writer.checkError()) {
+	            throw new IOException();
+	        }
+	        success = true;
+	            success = true;
+	        } catch (FileNotFoundException e) {
+	        	if (reader == null) {
+	                System.out.println("Source file not found.");
+	            } else {
+	                System.out.println("Cannot create destination file.");
+	            }
+	        } catch (IOException e) {
+	        	System.out.println("I/O error.");
+	            e.printStackTrace();
+	        } finally {
+	            
+	            if (success) {
+	                System.out.println("Lines copied: " + lineCount);
+	            }
+	        }
+	}
+}
