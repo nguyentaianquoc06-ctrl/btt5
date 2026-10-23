@@ -1,0 +1,60 @@
+package b1;
+
+public class Main {
+	public static void useString() {
+		String s = "";
+		long start = System.currentTimeMillis();
+
+		for (int i = 0; i < 100000; i++) {
+			s = s + "Hello";
+		}
+		long end = System.currentTimeMillis();
+
+		System.out.println("String:");
+		System.out.println("Thoi gian: " + (end - start) + " ms");
+		System.out.println("Do dai chuoi: " + s.length());
+	}
+
+
+	public static void useStringBuffer() {
+		StringBuffer sb = new StringBuffer();
+
+		long start = System.currentTimeMillis();
+
+		for (int i = 0; i < 100000; i++) {
+			sb.append("Hello");
+		}
+		long end = System.currentTimeMillis();
+		System.out.println("\nStringBuffer:");
+		System.out.println("Thoi gian: " + (end - start) + " ms");
+		System.out.println("Do dai chuoi: " + sb.length());
+	}
+
+	public static void contentAnalysis() {
+		String text = "Java is easy! I love Java. " + "Do you like Java? Java is interesting.";
+		int count = 0;
+
+		for (int i = 0; i < text.length(); i++) {
+			char c = text.charAt(i);
+
+			if (c == '.' || c == '?' || c == '!') {
+				count++;
+			}
+		}
+
+		System.out.println("\nPhan tich van ban:");
+		System.out.println("Van ban ban dau: " + text);
+		System.out.println("So cau: " + count);
+
+		String newText = text.replace("Java", "Python");
+
+		System.out.println("Van ban sau khi thay the:");
+		System.out.println(newText);
+	}
+
+	public static void main(String[] args) {
+		useString();
+		useStringBuffer();
+		contentAnalysis();
+	}
+}
