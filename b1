@@ -1,0 +1,23 @@
+package b11;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		try {
+			int a = scan.nextInt();
+			int b = scan.nextInt();
+			int c = a / b;
+			System.out.println(c);
+		} catch (InputMismatchException e) {
+			System.out.println("Vui lòng nhập đúng số nguyên!");
+		} catch (ArithmeticException e) {
+			System.out.println("Khong the chia cho 0!");
+
+		} finally {
+			System.out.println("Program finished.");
+		}
+	}
+}
